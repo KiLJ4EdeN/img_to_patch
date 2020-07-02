@@ -8,11 +8,16 @@ Image to patch conversion with python .
 
 ```python
 import matplotlib.pyplot as plt
+import matplotlib.image as mage
 from img_to_patch import im2patch
 
+# include the path to your desired image.
+temp_image = mage.imread('image.jpg')
+# perform the conversion.
 patches = im2patch(temp_image, nseg=8)
-# two times the nseg param.
+# length is two times the nseg param.
 print(len(patches))
+# demonstrate the results.
 for patch in patches:
   plt.figure()
   plt.imshow(patch)

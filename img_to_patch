@@ -5,10 +5,14 @@ def im2patch(img, nseg=4):
   :param nseg: number of segments.
   :return: A list of image patches.
   """
-  y_slide = img.shape[0] // nperseg
-  x_slide = img.shape[1] // nperseg
+  # find the step sizes in height and width directions.
+  y_slide = img.shape[0] // nseg
+  x_slide = img.shape[1] // nseg
+  # initiate patches.
   patches = []
-  for h in range(nperseg):
-    for w in range(nperseg):
+  # loop through the image.
+  for h in range(nseg):
+    for w in range(nseg):
+      # extract the patches.
       patches.append(img[(y_slide*h):(y_slide*(h+1)), (x_slide*w):(x_slide*(w+1))])
   return patches
